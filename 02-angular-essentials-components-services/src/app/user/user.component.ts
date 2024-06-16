@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
-import {User} from "../models/user.model";
-
+import { User } from '../models/user.model';
+import { CardComponent } from '../shared/card/card.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
