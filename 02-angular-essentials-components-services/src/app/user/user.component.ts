@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
+import {User} from "../models/user.model";
 
 
 @Component({
@@ -21,10 +22,4 @@ export class UserComponent {
   onSelectUser() {
     this.selectUser.emit(this.user.id);
   }
-}
-
-export default class User{
-  id!: string;
-  name!: string;
-  avatar!: string;
 }
