@@ -1,6 +1,6 @@
 <div *ngFor="let user of users">
   <button (click)="onSelectUser(user)" [class.active]="user === selectedUser">
-    <img [src]="getImagePath(user)" [alt]="user.name" />
+    <img [src]="getImagePath(user)" [alt]="user.name"/>
     <span>{{ user.name }}</span>
   </button>
 </div>
