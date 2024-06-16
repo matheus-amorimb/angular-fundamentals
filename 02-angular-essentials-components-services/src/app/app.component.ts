@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './header/header.component';
-import {UserComponent} from './user/user.component';
+import User, {UserComponent} from './user/user.component';
 import {DUMMY_USERS} from './dummy-users';
 import {TasksComponent} from "./tasks/tasks.component";
 
@@ -14,14 +14,17 @@ import {TasksComponent} from "./tasks/tasks.component";
 })
 export class AppComponent {
   users = DUMMY_USERS;
+  selectedIdUser?: string;
 
-  selectedUser: any = null;
-
-  onSelectUser(user: any) {
-    if (this.selectedUser === user) {
-      this.selectedUser = {} as any;
-      return;
+  onSelectUser(id: string) {
+    if(this.selectedIdUser === id){
+      this.selectedIdUser = '';
+      return
     }
-    this.selectedUser = user;
+    this.selectedIdUser = id;
+  }
+
+  get selectedUser(){
+    return <User>this.users.find((user) => user.id === this.selectedIdUser);
   }
 }
