@@ -14,6 +14,6 @@ import {CurrencyPipe} from "@angular/common";
 export class InvestmentTableComponent {
 
   investmentService = inject(InvestmentCalculatorService);
-  @Input() investmentValues!: any[];
+  @Input() investmentValues!: any;
 
 }
