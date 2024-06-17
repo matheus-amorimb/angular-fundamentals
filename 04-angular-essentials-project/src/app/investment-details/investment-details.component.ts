@@ -1,5 +1,5 @@
-import {Component, EventEmitter, inject, input, Output} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {Component, EventEmitter, inject, input, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CurrencyPipe, PercentPipe} from "@angular/common";
 import {InvestmentCalculatorService} from "../investment-calculator.service";
 
@@ -10,28 +10,57 @@ import {InvestmentCalculatorService} from "../investment-calculator.service";
   imports: [
     FormsModule,
     CurrencyPipe,
-    PercentPipe
+    PercentPipe,
+    ReactiveFormsModule
   ],
   styleUrl: './investment-details.component.scss'
 })
 export class InvestmentDetailsComponent {
-
-  initialInvestment!: number;
-  additionalInvestment!: number;
-  years!: number;
-  expectedRate!: number;
+  @Output() investmentCalculated = new EventEmitter<any[]>();
   investmentService = inject(InvestmentCalculatorService);
 
-  @Output() investmentCalculated = new EventEmitter<any[]>();
+  investmentForm!: FormGroup;
+
+  constructor() {
+    this.investmentForm = new FormGroup({
+      initialInvestment:
+        new FormControl('', [Validators.required]),
+      additionalInvestment:
+        new FormControl('', [Validators.required]),
+      years:
+        new FormControl('', [Validators.required]),
+      expectedRate:
+        new FormControl('', [Validators.required]),
+    })
+  }
+
+  get initialInvestment() {
+    return this.investmentForm.get('initialInvestment');
+  }
+
+  get additionalInvestment() {
+    return this.investmentForm.get('additionalInvestment');
+  }
+
+  get years() {
+    return this.investmentForm.get('years');
+  }
+
+  get expectedRate() {
+    return this.investmentForm.get('expectedRate');
+  }
 
   onSubmit() {
 
+    if (this.investmentForm.invalid) {
+      return;
+    }
+
     let investmentDetails = {
-      initialInvestment: this.initialInvestment,
-      additionalInvestment: this.additionalInvestment,
-      years: this.years,
-      expectedRate: this.expectedRate,
-      investmentService: this.investmentService,
+      initialInvestment: this.initialInvestment?.value,
+      additionalInvestment: this.additionalInvestment?.value,
+      years: this.years?.value,
+      expectedRate: this.expectedRate?.value,
     };
 
     const investmentResults = this.investmentService.calculateInvestmentResults(investmentDetails);
