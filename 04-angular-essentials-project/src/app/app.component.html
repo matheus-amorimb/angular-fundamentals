@@ -1,0 +1,15 @@
+<div class="container">
+  <app-header></app-header>
+  <main>
+    <section class="investment-details">
+      <app-investment-details
+        (investmentCalculated)="onInvestmentsCalculated($event)"
+      >
+      </app-investment-details>
+    </section>
+    <section class="investment-table">
+      <app-investment-table
+        [investmentValues]="investmentValues"></app-investment-table>
+    </section>
+  </main>
+</div>
