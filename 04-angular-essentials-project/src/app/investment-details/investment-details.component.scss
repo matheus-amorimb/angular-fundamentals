@@ -1,0 +1,63 @@
+.form-container {
+  background: #deceb6;
+  height: 100%;
+  width: 400px;
+}
+
+.form-container .investment-details {
+  padding: 15px;
+  margin-left: 10px;
+}
+
+input, label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.form-content {
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .form-group {
+    margin-bottom: 30px;
+    width: 100%;
+
+    input {
+      min-height: 44px;
+      width: 100%;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      font-size: 18px;
+      text-indent: 10px;
+      text-size-adjust: inherit;
+
+    }
+
+    .align-right {
+      text-align: right;
+    }
+  }
+
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.submit-button{
+  color: white;
+  background-color: #008254;
+  width: 100%;
+  min-height: 44px;
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.submit-button:hover,
+.submit-button:active{
+  background-color: #006744;
+  box-shadow: 0 1px 6px rgba(255, 255, 255, 0.3);
+}
