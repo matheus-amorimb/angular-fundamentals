@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, input, OnInit, Output} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CurrencyPipe, PercentPipe} from "@angular/common";
 import {InvestmentCalculatorService} from "../investment-calculator.service";
@@ -62,6 +62,6 @@ export class InvestmentDetailsComponent {
       expectedRate: this.expectedRate?.value,
     };
 
-    const investmentResults = this.investmentService.calculateInvestmentResults(investmentDetails);
+    this.investmentService.calculateInvestmentResults(investmentDetails);
   }
 }
