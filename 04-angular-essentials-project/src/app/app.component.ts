@@ -13,9 +13,4 @@ import {InvestmentTableComponent} from "./investment-table/investment-table.comp
 })
 export class AppComponent {
   title = '04-angular-essentials-project';
-  investmentValues! : any
-
-  onInvestmentsCalculated($event: any[]) {
-    this.investmentValues = $event;
-  }
 }

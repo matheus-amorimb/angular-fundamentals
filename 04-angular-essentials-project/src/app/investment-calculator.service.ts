@@ -4,6 +4,11 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class InvestmentCalculatorService {
+  investmentValues: any[] = [];
+
+  get investmentResults() {
+    return this.investmentValues;
+  }
 
   calculateInvestmentResults(investmentDetails: any): any[] {
     const years = investmentDetails.years;
@@ -29,6 +34,8 @@ export class InvestmentCalculatorService {
         totalAmountInvested: totalInvested + additionalInvestment * year
       });
     }
+
+    this.investmentValues = [...investmentValues];
 
     return investmentValues;
   }

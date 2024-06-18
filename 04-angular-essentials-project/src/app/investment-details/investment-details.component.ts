@@ -16,7 +16,6 @@ import {InvestmentCalculatorService} from "../investment-calculator.service";
   styleUrl: './investment-details.component.scss'
 })
 export class InvestmentDetailsComponent {
-  @Output() investmentCalculated = new EventEmitter<any[]>();
   investmentService = inject(InvestmentCalculatorService);
 
   investmentForm!: FormGroup;
@@ -64,8 +63,5 @@ export class InvestmentDetailsComponent {
     };
 
     const investmentResults = this.investmentService.calculateInvestmentResults(investmentDetails);
-
-    this.investmentCalculated.emit(investmentResults);
-
   }
 }
