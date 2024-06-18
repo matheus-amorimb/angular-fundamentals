@@ -11,17 +11,14 @@ export class InvestmentCalculatorService {
   }
 
   calculateInvestmentResults(investmentDetails: any): any[] {
-    const years = investmentDetails.years;
-    const initialInvestment = investmentDetails.initialInvestment;
-    const additionalInvestment = investmentDetails.additionalInvestment;
-    const expectedRate = investmentDetails.expectedRate / 100; // Convert percentage to decimal
+    const {years, initialInvestment, additionalInvestment, expectedRate} = investmentDetails;
 
     const investmentValues = [];
     let totalInvested = initialInvestment;
     let totalInterest = 0;
 
     for (let year = 1; year <= years; year++) {
-      const interestEarned = totalInvested * expectedRate;
+      const interestEarned = totalInvested * expectedRate/100;
       totalInterest += interestEarned;
       totalInvested += additionalInvestment;
       totalInvested += interestEarned;
