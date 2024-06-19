@@ -1,0 +1,15 @@
+<app-card>
+  <ul>
+    @for (user of users; track user.id) {
+      <li>
+        <button
+          (click)="onSelectUser(user)"
+          [class.active]="user.id == selectedUser?.id && !toUnselect"
+        >
+          <img [src]="getImagePath(user)" [alt]="user.name"/>
+          <span>{{ user.name }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+</app-card>
